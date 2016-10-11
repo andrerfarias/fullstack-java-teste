@@ -1,0 +1,37 @@
+<md-dialog aria-label="Autocomplete Dialog Example" ng-controller="pedidosController">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Primeiro, escolha um cliente</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-dialog-content ng-cloak>
+    <div class="md-dialog-content">
+      <form ng-submit="$event.preventDefault()" ng-if="!loader && pedido == null">
+        <md-input-container class="md-icon-float md-block">
+          <label>Nome, CPf, CNPJ ou E-mail</label>
+          <md-icon class="fa fa-search"></md-icon>
+          <input ng-model="clienteFilter" type="text">
+        </md-input-container>
+        <div layout="column" layout-align="center" ng-if="clientes.length > 0">
+          <md-list-item  ng-repeat="cliente in clientes | filter:clienteFilter">
+            <p>
+              <strong>{{cliente.nome}}</strong>
+              {{cliente.tipoDocumento}} {{cliente.documento}}
+            </p>
+            <md-button class="md-icon-button"  ng-click="criarPedido(cliente)"  aria-label="Selecionar cliente">
+              <md-icon class="fa fa-angle-right fa-2x"></md-icon>
+            </md-button>
+            <md-divider ng-if="!$last"></md-divider>
+          </md-list-item>
+        </div>
+      </form>
+      <div layout="row" layout-sm="column" layout-align="space-around" ng-if="loader || (clientes == null || clientes.length < 1)">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button aria-label="Fechar Modal" ng-click="fecharDialogPedido()">Fechar</md-button>
+  </md-dialog-actions>
+</md-dialog>

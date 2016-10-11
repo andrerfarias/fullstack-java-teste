@@ -1,0 +1,45 @@
+<md-toolbar md-scroll-shrink md-whiteframe >
+  <div class="md-toolbar-tools">
+    <div layout="column" layout-align="start start" flex>&nbsp;Pedidos</div> 
+    <div layout="column" layout-align="end end" flex><md-badge  class="badge-white">{{pedidos.length}}</md-badge></div> 
+  </div>
+</md-toolbar>
+<md-content class="padding-top-20" ng-if="pedidos == null || pedidos.length < 1">
+      <div layout="row" layout-align="center center" flex>
+      <div class="font-grey" layout="row" layout-align="center center">
+          <i class="fa fa-question-circle-o fa-3x"></i> 
+      </div>
+    </div>
+    <div class="padding-bottom-30 font-grey" layout="row" layout-align="center center" flex>
+      Nenhum pedido encontrado
+    </div>
+</md-content>
+<md-card-content ng-repeat="pedido in pedidos" >
+    <md-card md-theme-watch>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Pedido {{pedido.id}}</span>
+                <span class="md-subhead">{{pedido.cliente.nome}}<md-badge>{{pedido.cliente.tipoDocumento}} {{pedido.cliente.documento}}<md-badge></span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row">
+            <div flex="15" layout="column">
+              <label>Produtos</label>
+              <span class="font-25">{{((pedido.produtos != null ) ? pedido.produtos.length : 0)}}</span>
+            </div>
+            <div flex="65" layout="column" class="padding-left-70">
+                <label>Valor Total</label>
+                <span class="price">{{pedido.valorTotal  | currency : "R$ "}}</span>
+            </div>
+            <div flex="10" layout="column">
+                <md-button class="md-raised md-primary" href="#/pedido/{{pedido.id}}/produto"><i class="fa fa-pencil"></i> Alterar</md-button>
+            </div>
+            <div flex="10" layout="column">
+                <md-button class="md-raised md-primary md-danger" ng-click="cancelarPedido(pedido.id)"><i class="fa fa-trash"></i> Cancelar</md-button>
+            </div>
+        </md-card-content>
+    </md-card>
+</md-card-content>
+<div layout="row" layout-align="end center">
+  <md-button class="md-primary md-raised md-success" flex="20" ng-click="selecionarClientePedido($event)">Novo Pedido</md-button>
+</div>

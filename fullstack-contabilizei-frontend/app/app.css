@@ -1,0 +1,116 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+md-badge{
+  margin: 0 0 0 8px;
+  background-color: #777;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.md-warn{
+  background-color: #F44336;
+}
+
+.badge-white{
+  background-color:white;
+  color: #777;
+}
+
+
+.price{
+  color: #259b24;
+  font-size:25px;
+}
+
+/** FONT SIZES **/
+
+.font-15{ 
+  font-size:15px !important;
+}
+
+.font-20{ 
+  font-size:20px;
+}
+
+.font-25{ 
+  font-size:25px;
+}
+
+/** FONT SIZES **/
+
+/** FONT COLOROS **/
+.font-grey{
+  color: #777;
+}
+/** FONT COLOROS **/
+/** PADDING **/
+.padding-left-20{
+  padding-left:20px;
+}
+.padding-left-70{
+  padding-left:70px;
+}
+
+.padding-right-30{
+  padding-right:30px;
+}
+
+.padding-bottom-30{
+  padding-bottom:30px;
+}
+
+.padding-top-15{
+  padding-top:15px;
+}
+
+.padding-top-20{
+  padding-top:20px;
+}
+/** PADDING **/
+
+.margin-top-30{
+  margin-top:30px;
+}
+
+.md-success{
+  background-color: #259b24 !important;
+  color: white !important;
+}
+
+.md-danger{
+  background-color: #a94442 !important;
+  color: white !important;
+}
+
+
+.success{
+  color: #259b24 !important;
+}
+
+.md-fab .fa-2x{
+  padding-top:12px !important;
+}
