@@ -211,6 +211,7 @@ Uma requisição **GET** para a url *BASE_URL/pedido/:id* poderá retornar:
 #### deletePedido(:id)
 
 Este serviço irá cancelar um pedido específico no banco de dados, veja tabela de parâmetros:
+
 Parâmetro de entrada | Tipo | Descrição
 ------------ | ------------- |-------------
 URL | **DELETE**  |  **BASE_URL**/pedido/:id
