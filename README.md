@@ -37,22 +37,66 @@ documento | Query Param | Documento do cliente (CPF ou CNPJ)
 email | Query Param | E-mail do cliente
 Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum registro for encontrado
 
-##### Exemplo
 Uma requisição **GET** para a url *BASE_URL/cliente* poderá retornar:
 ```javascript
 200 OK
 [
   {
-    "documento": 7314935912,
-    "email": "andrerfarias@gmail.com",
-    "foneDdd": 41,
-    "foneNumero": 96740459,
-    "id": 1,
-    "nome": "André Luiz Rodrigues Farias",
-    "tipoDocumento": "cpf"
+    "id": xxxxxx,
+    "documento": xxxxxxxxxx,
+    "email": "xxxxxxxx@xxxxxxx.xxx",
+    "foneDdd": xx,
+    "foneNumero": xxxxxxxx,
+    "nome": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tipoDocumento": "xxxx" 
   }
 ]
 ```
 
+#### getCliente(:id)
+Este serviço irá retornar o dados de um cliente específico cadastrados no banco de dados, veja tabela de parâmetros:
 
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **GET**  |  **BASE_URL**/cliente/:id
+id | Path Param | ID do cliente solicitado
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum registro for encontrado
+
+Uma requisição **GET** para a url *BASE_URL/cliente/:id* poderá retornar:
+```javascript
+200 OK
+  {
+    "id": xxxxxx,
+    "documento": xxxxxxxxxx,
+    "email": "xxxxxxxx@xxxxxxx.xxx",
+    "foneDdd": xx,
+    "foneNumero": xxxxxxxx,
+    "nome": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tipoDocumento": "xxxx" 
+  }
+```
+
+### Produtos
+
+#### getProdutos
+
+Este serviço irá retornar todos os produtos cadastrados no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **GET**  |  **BASE_URL**/produto
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum registro for encontrado
+
+Uma requisição **GET** para a url *BASE_URL/produto* poderá retornar:
+```javascript
+200 OK
+[
+  {
+    "id": xxxxxx,
+    "descricao": "xxxxxxxxxxxxx",
+    "nome": "xxxxxxxxxxx",
+    "valorUnitario": xxxx.xx
+  }
+]
+```
 
