@@ -351,5 +351,12 @@ Foi criado um componente utilizando o *factory* do Angular para reutilização d
 * Para criar o banco de dados basta executar o [arquivo de importação](/database-import.sql)
 
 ## Back-End
+* Apache Tomcat 8.0.27.0
+* Configurar as credenciais de acesso ao banco de dados no arquivo [persistence.xml](fullstack-contabilizei-backend/src/main/resources/META-INF/persistence.xml)
+* Ao rodar o projeto pela primeira vez as dependências serão baixadas e instaladas pelo **Maven**
 
 ## Front-End
+* É necessário que o Node.js esteja instalado (https://nodejs.org/en/download/)
+* Configurar a URL base de conexão com o serviço no [arquivo de configuração](/fullstack-contabilizei-frontend/app/services.js)
+* Executar o comando ```npm install``` no diretório base da aplicação
+* Executar o comando ```npm start``` no diretório base e a aplicação estará rodando
