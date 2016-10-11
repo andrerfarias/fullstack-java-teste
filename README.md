@@ -330,3 +330,26 @@ Uma requisição **DELETE** para a url *BASE_URL/pedido/produto/:pedidoProdutoId
 ```javascript
 200 OK
 ```
+
+
+# Front-End 
+
+O Front-End foi criado utilizando as tecnologias propostas pelo teste, o framework utilizado para a criação da interface foi o Angular Material Design (https://material.angularjs.org).
+
+Todas as regras de negócio estão aplicadas no serviço, a interface utilizará somente os retornos para exibição das informações e interação com o usuário.
+
+## Consumo de serviços
+
+Foi criado um componente utilizando o *factory* do Angular para reutilização dos recursos e injeção de dependência nos controllers que irão realizar requisições para os serviços, a configuração da *URL Base* do serviço fica neste arquivo *(services.js)* através da constante *FULLSTACK_SERVICE_API* que se encontra na pasta *app* do projeto.
+
+
+# Instalação e Configuração
+
+## Banco de Dados
+* MySQL versão 5.7.15
+* Nome do DB: teste-contabilizei
+* Para criar o banco de dados basta executar o [arquivo de importação](/database-import.sql)
+
+## Back-End
+
+## Front-End
