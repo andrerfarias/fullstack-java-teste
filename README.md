@@ -100,3 +100,232 @@ Uma requisição **GET** para a url *BASE_URL/produto* poderá retornar:
 ]
 ```
 
+### Pedidos
+
+#### getPedidos
+
+Este serviço irá retornar todos os pedidos cadastrados e ativos no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **GET**  |  **BASE_URL**/pedido
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum registro for encontrado
+
+Uma requisição **GET** para a url *BASE_URL/pedido* poderá retornar:
+```javascript
+200 OK
+[
+  {
+    "cliente": {
+      "documento": xxxxxxxxxx,
+      "email": "xxxxxxxx@xxxx.xxxx",
+      "foneDdd": xx,
+      "foneNumero": xxxxxxxx,
+      "id": xxxxx,
+      "nome": "xxxxxxxx",
+      "tipoDocumento": "xxxxx"
+    },
+    "dataEmissao": xxxxxxxxxxxxx,
+    "id": xxx,
+    "produtos": [
+      {
+        "dataInclusao": xxxxxxxxxxxxxxx,
+        "id": xxx,
+        "nome": "xxxxxxx",
+        "quantidade": xx,
+        "status": "xxxxx",
+        "valorTotal": xxxx.xx,
+        "valorUnitario": xxxx.xx
+      },
+      {
+        "dataInclusao": xxxxxxxxxxxxxxx,
+        "id": xxx,
+        "nome": "xxxxxxx",
+        "quantidade": xx,
+        "status": "xxxxx",
+        "valorTotal": xxxx.xx,
+        "valorUnitario": xxxx.xx
+      }
+    ],
+    "status": {
+      "id": xxx,
+      "nome": "xxxx"
+    },
+    "valorTotal": xxxx.xx
+  }
+]
+```
+
+#### getPedido(:id)
+
+Este serviço irá retornar as informações de um pedido específico no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **GET**  |  **BASE_URL**/pedido/:id
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum registro for encontrado
+
+Uma requisição **GET** para a url *BASE_URL/pedido/:id* poderá retornar:
+```javascript
+200 OK
+  {
+    "cliente": {
+      "documento": xxxxxxxxxx,
+      "email": "xxxxxxxx@xxxx.xxxx",
+      "foneDdd": xx,
+      "foneNumero": xxxxxxxx,
+      "id": xxxxx,
+      "nome": "xxxxxxxx",
+      "tipoDocumento": "xxxxx"
+    },
+    "dataEmissao": xxxxxxxxxxxxx,
+    "id": xxx,
+    "produtos": [
+      {
+        "dataInclusao": xxxxxxxxxxxxxxx,
+        "id": xxx,
+        "nome": "xxxxxxx",
+        "quantidade": xx,
+        "status": "xxxxx",
+        "valorTotal": xxxx.xx,
+        "valorUnitario": xxxx.xx
+      },
+      {
+        "dataInclusao": xxxxxxxxxxxxxxx,
+        "id": xxx,
+        "nome": "xxxxxxx",
+        "quantidade": xx,
+        "status": "xxxxx",
+        "valorTotal": xxxx.xx,
+        "valorUnitario": xxxx.xx
+      }
+    ],
+    "status": {
+      "id": xxx,
+      "nome": "xxxx"
+    },
+    "valorTotal": xxxx.xx
+  }
+```
+
+#### deletePedido(:id)
+
+Este serviço irá cancelar um pedido específico no banco de dados, veja tabela de parâmetros:
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **DELETE**  |  **BASE_URL**/pedido/:id
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum pedido for encontrado
+
+Uma requisição **DELETE** para a url *BASE_URL/pedido/:id* poderá retornar:
+```javascript
+200 OK
+```
+
+#### postPedido()
+
+Este serviço irá incluir um novo pedido no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **POST**  |  **BASE_URL**/pedido
+Request | JSON PAYLOAD | ```{ "cliente_id" : id do cliente dono do pedido }```
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum pedido for encontrado
+
+Uma requisição **POST** para a url *BASE_URL/pedido* poderá retornar:
+```javascript
+201 CREATED
+
+{
+  "cliente": {
+    "documento": xxxxxxxxxx,
+    "email": "xxxxxxxxxxxx@xxxxx.xxx",
+    "foneDdd": xx,
+    "foneNumero": xxxxxxxx,
+    "id": xxxxx,
+    "nome": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tipoDocumento": "xxxx"
+  },
+  "dataEmissao": xxxxxxxxxxxxxxxxxxxxx,
+  "id": xxxx,
+  "produtos": null,
+  "status": {
+    "id": xxxxxx,
+    "nome": "xxxxxxxxxxxxxx"
+  },
+  "valorTotal": xxxx.xx
+}
+
+```
+
+#### putPedido(:id)
+
+Este serviço irá atualizar um registro existente no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **PUT**  |  **BASE_URL**/pedido/:id
+Request | JSON PAYLOAD | ```{ "cliente_id" : id do cliente dono do pedido }```
+Response | HTTP Code | Status 200 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum pedido for encontrado
+
+Uma requisição **PUT** para a url *BASE_URL/pedido/:id* poderá retornar:
+```javascript
+200 OK
+
+{
+  "cliente": {
+    "documento": xxxxxxxxxx,
+    "email": "xxxxxxxxxxxx@xxxxx.xxx",
+    "foneDdd": xx,
+    "foneNumero": xxxxxxxx,
+    "id": xxxxx,
+    "nome": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tipoDocumento": "xxxx"
+  },
+  "dataEmissao": xxxxxxxxxxxxxxxxxxxxx,
+  "id": xxxx,
+  "produtos": null,
+  "status": {
+    "id": xxxxxx,
+    "nome": "xxxxxxxxxxxxxx"
+  },
+  "valorTotal": xxxx.xx
+}
+
+```
+#### postPedidoProduto(:id)
+
+Este serviço irá incluir um produto em um pedido existente no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **POST**  |  **BASE_URL**/pedido/:id/produto
+Request | JSON PAYLOAD | ```{ "produto_id" : id do produto que deverá ser incluído, "quantidade" : quantidade do produto que será incluída na compra }```
+Response | HTTP Code | Status 201 e um PAYLOAD em JSON ou 404 com corpo vazio se nenhum pedido for encontrado
+
+Uma requisição **POST** para a url *BASE_URL/pedido/:id/produto* poderá retornar:
+```javascript
+201 CREATED
+{
+  "dataInclusao": xxxxxxxxxxxxxxxxxxxx,
+  "id": xxxxx,
+  "nome": "xxxxxxxxxxxxxx",
+  "quantidade": xxxx,
+  "status": "xxxxxx",
+  "valorTotal": xxxx.xx,
+  "valorUnitario": xxxx.xx
+}
+```
+
+#### deletePedidoProduto(:pedidoProdutoId)
+
+Este serviço irá incluir um produto em um pedido existente no banco de dados, veja tabela de parâmetros:
+
+Parâmetro de entrada | Tipo | Descrição
+------------ | ------------- |-------------
+URL | **DELETE**  |  **BASE_URL**/pedido/produto/:pedidoProdutoId
+Response | HTTP Code | Status 200 ou 404 com corpo vazio se nenhum pedido for encontrado
+
+Uma requisição **DELETE** para a url *BASE_URL/pedido/produto/:pedidoProdutoId* poderá retornar:
+```javascript
+200 OK
+```
